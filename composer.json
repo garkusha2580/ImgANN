@@ -1,11 +1,8 @@
 {
-    "name": "nnn/nnn",
-    "description": "n",
+    "name": "w/w",
+    "description": "d",
     "type": "b",
-    "license": "n",
+    "license": "b",
     "minimum-stability": "beta",
-    "require": {},
-    "require-dev": {
-        "phpunit/phpunit": "5.7"
-    }
+    "require": {}
 }
