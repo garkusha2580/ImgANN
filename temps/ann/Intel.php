@@ -12,6 +12,19 @@ namespace temps\ann;
 class Intel
 {
 
+    public function test($data,$res){
+        $train_file = (dirname(__FILE__) . "/xor_float.net");
+        if (!is_file($train_file))
+            die("The file xor_float.net has not been created! Please run simple_train.php to generate it");
+
+        $ann = fann_create_from_file($train_file);
+        if (!$ann)
+            die("ANN could not be created");
+
+        fann_train($ann,$data,$res);
+        fann_save($ann, dirname(__FILE__) . "/xor_float.net");
+        fann_destroy($ann);
+    }
     public function getImg($name){
         echo "<br>";
         $data = null;
@@ -41,7 +54,6 @@ class Intel
             echo "<br>";
 
         }
-//        echo $data;
         return $str;
     }
     public function study($data=null,$result=null)
@@ -80,7 +92,6 @@ class Intel
             die("ANN could not be created");
 
         $calc_out = fann_run($ann, $data);
-        printf("%.2f |  %.2f |  %.2f |  %.2f",$calc_out[0],$calc_out[1],$calc_out[2],$calc_out[3   ]);
         fann_destroy($ann);
         return $calc_out;
     }
