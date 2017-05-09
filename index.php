@@ -1,7 +1,7 @@
 <?php
 spl_autoload_register();
 
-use \temps\ann\Intel,\temps\ann\Hopfield;
+use \temps\ann\Intel, \temps\ann\Hopfield;
 
 $exec = new Intel();
 $alg = new Hopfield();
@@ -21,15 +21,12 @@ $alg->createReferenceMatrix($exec->getImg("7.jpg"));
 $alg->createReferenceMatrix($exec->getImg("8.jpg"));
 $alg->createReferenceMatrix($exec->getImg("9.jpg"));
 
-for ($i=0; $i<count(Hopfield::$sumMatrix); $i++){
-    for($j=0; $j<count(Hopfield::$sumMatrix[0]); $j++){
-        echo Hopfield::$sumMatrix[$j][$i]." ";
-    }
-    echo "<br>";
-}
+$result = $alg->createVector($exec->getImg("1(2).jpg"));
+$result = $alg->createVector($result);
+$alg->viewMatrix(Hopfield::$sumMatrix);
 //$result=[-1,-1,-1,1];
 //$exec->study();
-//$data = $exec->init($arr);
+//$data = $exec->init($result);
 //var_dump($data);
 //$exec->test($arr,$result);
 //printf("%.2f|%.2f|%.2f|%.2f",$data[0],$data[1],$data[2],$data[3]);
